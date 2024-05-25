@@ -107,6 +107,7 @@
     with pkgs;
     [
       floorp
+      bat
       vim
       wget
       git

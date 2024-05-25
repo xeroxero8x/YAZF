@@ -413,6 +413,8 @@ in
         cd = "z ";
         ".." = "cd ..";
         "..." = "cd ../..";
+	rm = "trash";
+	"rm -rf" = "trash";
         neofetch="neofetch --ascii ~/.config/ascii-neofetch";
       };
     };
