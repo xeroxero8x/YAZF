@@ -28,9 +28,9 @@ with lib;
           "pulseaudio"
           "cpu"
           "memory"
+          "idle_inhibitor"
         ];
         modules-right = [
-          "idle_inhibitor"
           "custom/themeselector"
           "custom/notification"
           "custom/exit"

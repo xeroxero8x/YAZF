@@ -107,6 +107,7 @@
     with pkgs;
     [
       floorp
+      localsend
       bat
       vim
       wget
@@ -172,6 +173,7 @@
       killall
       warp-terminal
       protonup-qt
+      tldr
       font-awesome
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       sugar.sddm-sugar-dark # Name: sugar-dark
