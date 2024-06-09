@@ -52,7 +52,7 @@ in
     source = ../../config/fonts;
     recursive = true;
   };
-  home.file.".config/starship.toml".source = ../../config/starship.toml;
+  #home.file.".config/starship.toml".source = ../../config/starship.toml;
   home.file.".config/ascii-neofetch".source = ../../config/ascii-neofetch;
   home.file.".base16-themes".source = ../../config/base16-themes;
   home.file.".emoji".source = ../../config/emoji;
@@ -347,7 +347,41 @@ in
     starship = {
       enable = true;
       package = pkgs.starship;
-    };
+       settings = {
+      # Show command duration on the right
+      right_format = "$cmd_duration";
+
+      # Customize directory section
+      directory = {
+        format = "[ ](bold #89b4fa)[ $path ]($style)";
+        style = "bold #b4befe";
+       };
+
+      # Customize prompt character for success and error states
+      character = {
+        success_symbol = "[ ](bold #89b4fa)[ ➜](bold green)";
+        error_symbol = "[ ](bold #89b4fa)[ ➜](bold red)";
+        };
+
+      # Customize command duration display
+      cmd_duration = {
+        min_time = 10;
+        format = "[]($style)[[󰔚 ](bg:#161821 fg:#d4c097 bold)$duration](bg:#161821 fg:#BBC3DF)[ ]($style)";
+        disabled = false;
+        style = "bg:none fg:#161821";
+        };
+
+      # Directory substitutions for common paths
+      directory.substitutions = {
+        "~" = "󰋞";
+        "zicronos" = " ";
+        "Documents" = " ";
+        "Downloads" = " ";
+        "Music" = " ";
+        "Pictures" = " ";
+          };
+        };
+      };
     wofi = {
       enable = true;
       settings = {
