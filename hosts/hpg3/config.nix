@@ -107,6 +107,7 @@
     with pkgs;
     [
       floorp
+      gpt4all
       localsend
       bat
       vim

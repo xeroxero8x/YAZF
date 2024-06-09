@@ -230,7 +230,7 @@ in
         comment-nvim
         nvim-ts-context-commentstring
         noice-nvim
-          nvim-notify
+        nvim-notify
         {
           plugin = dracula-nvim;
           config = "colorscheme dracula";
@@ -243,6 +243,7 @@ in
         nvim-tree-lua
         telescope-fzf-native-nvim
         vim-tmux-navigator
+        which-key-nvim
       ];
       extraConfig = ''
         set noemoji
@@ -262,6 +263,7 @@ in
         ${builtins.readFile ../../config/nvim/plugins/treesitter.lua}
         require("ibl").setup()
         require("bufferline").setup{}
+        require("which-key").setup{}
         require("lualine").setup({
           icons_enabled = true,
           theme = 'dracula',
@@ -432,7 +434,6 @@ in
         ".." = "cd ..";
         "..." = "cd ../..";
 	      rm = "trash";
-	      "rm -rf" = "trash";
         neofetch="neofetch --ascii ~/.config/ascii-neofetch";
         gcl = "git clone ";
         gc = "git commit";

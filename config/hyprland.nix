@@ -42,7 +42,7 @@ with lib;
                 exec-once = swaync
                 exec-once = nm-applet --indicator
                 exec-once = lxqt-policykit-agent
-                exec-once = swww img /home/${username}/Pictures/Wallpapers/zaney-wallpaper.jpg
+                exec-once = wallsetter
                 monitor=,preferred,auto,1
                 ${extraMonitorSettings}
                 general {
