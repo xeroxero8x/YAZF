@@ -11,7 +11,7 @@
 let
   theme = config.colorScheme.palette;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  inherit (import ../hosts/${host}/variables.nix)
+    inherit (import ../../hosts/${host}/variables.nix)
     browser
     borderAnim
     terminal

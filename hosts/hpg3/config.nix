@@ -107,6 +107,7 @@
     with pkgs;
     [
       floorp
+      btop
       gpt4all
       localsend
       bat

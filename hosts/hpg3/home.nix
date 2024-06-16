@@ -28,10 +28,12 @@ in
   imports = [
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
-    ../../config/hyprland.nix
-    ../../config/swaync.nix
-    ../../config/waybar.nix
-    ../../config/wlogout.nix
+    ../../config/home/hyprland.nix
+    ../../config/home/swaync.nix
+    ../../config/home/waybar.nix
+    ../../config/home/wlogout.nix
+    ../../config/home/gtk.nix
+    ./misc.nix 
   ];
 
   # Define Settings For Xresources
@@ -40,57 +42,6 @@ in
   };
 
   # Place Files Inside Home Directory
-  home.file."Pictures/Wallpapers" = {
-    source = ../../config/wallpapers;
-    recursive = true;
-  };
-  home.file.".config/wlogout/icons" = {
-    source = ../../config/wlogout;
-    recursive = true;
-  };
-  home.file.".local/share/fonts" = {
-    source = ../../config/fonts;
-    recursive = true;
-  };
-  #home.file.".config/starship.toml".source = ../../config/starship.toml;
-  home.file.".config/ascii-neofetch".source = ../../config/ascii-neofetch;
-  home.file.".base16-themes".source = ../../config/base16-themes;
-  home.file.".emoji".source = ../../config/emoji;
-  home.file.".face.icon".source = ../../config/face.jpg;
-  home.file.".config/neofetch/config.conf".text = ''
-    print_info() {
-        prin "$(color 6)  ZaneyOS $ZANEYOS_VERSION"
-        info underline
-        info "$(color 7)  VER" kernel
-        info "$(color 2)  UP " uptime
-        info "$(color 4)  PKG" packages
-        info "$(color 6)  DE " de
-        info "$(color 5)  TER" term
-        info "$(color 3)  CPU" cpu
-        info "$(color 7)  GPU" gpu
-        info "$(color 5)  MEM" memory
-        prin " "
-        prin "$(color 1) $(color 2) $(color 3) $(color 4) $(color 5) $(color 6) $(color 7) $(color 8)"
-    }
-    distro_shorthand="on"
-    memory_unit="gib"
-    cpu_temp="C"
-    separator=" $(color 4)>"
-    stdout="off"
-  '';
-  home.file.".config/swappy/config".text = ''
-    [Default]
-    save_dir=/home/${username}/Pictures/Screenshots
-    save_filename_format=swappy-%Y%m%d-%H%M%S.png
-    show_panel=false
-    line_size=5
-    text_size=20
-    text_font=Ubuntu
-    paint_mode=brush
-    early_exit=true
-    fill_shape=false
-  '';
-
 
   # Install & Configure Git
   programs.git = {
@@ -123,39 +74,7 @@ in
     size = 24;
   };
 
-  # Theme GTK
-  gtk = {
-    enable = true;
-    font = {
-      name = "Ubuntu";
-      size = 12;
-      package = pkgs.ubuntu_font_family;
-    };
-    theme = {
-      name = "${config.colorScheme.slug}";
-      package = gtkThemeFromScheme { scheme = config.colorScheme; };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
 
-  # Theme QT -> GTK
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt;
-    };
-  };
 
   # Scripts
   home.packages = [
@@ -249,18 +168,18 @@ in
         set noemoji
       '';
       extraLuaConfig = ''
-        ${builtins.readFile ../../config/nvim/options.lua}
-        ${builtins.readFile ../../config/nvim/keymaps.lua}
-        ${builtins.readFile ../../config/nvim/plugins/alpha.lua}
-        ${builtins.readFile ../../config/nvim/plugins/autopairs.lua}
-        ${builtins.readFile ../../config/nvim/plugins/auto-session.lua}
-        ${builtins.readFile ../../config/nvim/plugins/comment.lua}
-        ${builtins.readFile ../../config/nvim/plugins/cmp.lua}
-        ${builtins.readFile ../../config/nvim/plugins/lsp.lua}
-        ${builtins.readFile ../../config/nvim/plugins/nvim-tree.lua}
-        ${builtins.readFile ../../config/nvim/plugins/telescope.lua}
-        ${builtins.readFile ../../config/nvim/plugins/todo-comments.lua}
-        ${builtins.readFile ../../config/nvim/plugins/treesitter.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/options.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/keymaps.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/alpha.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/autopairs.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/auto-session.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/comment.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/cmp.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/lsp.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/nvim-tree.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/telescope.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/todo-comments.lua}
+        ${builtins.readFile ../../config/home/misc/nvim/plugins/treesitter.lua}
         require("ibl").setup()
         require("bufferline").setup{}
         require("which-key").setup{}

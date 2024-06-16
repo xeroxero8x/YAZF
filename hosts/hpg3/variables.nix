@@ -7,17 +7,17 @@
   theme = "dracula";
   
   #Shell
-  theShell = "zsh";
+  theShell = "zsh"; #TODO:  Add nushell and zsh config
 
   # Hyprland Settings
   borderAnim = false; # Enable / Disable Hyprland Border Animation
   extraMonitorSettings = "";
 
   # Waybar Settings
-  clock24h = false;
+  clock24h = true;
   waybarAnimations = false;
 
   # Program Options
   browser = "floorp"; # Set Default Browser
-  terminal = "kitty"; # Set Default System Terminal
+  terminal = "warp-terminal"; # Set Default System Terminal
 }
