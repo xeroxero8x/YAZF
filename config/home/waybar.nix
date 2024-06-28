@@ -9,7 +9,7 @@
 let
   palette = config.colorScheme.palette;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../hosts/${host}/variables.nix) clock24h waybarAnimations;
+  inherit (import ../../hosts/${host}/variables.nix) clock24h waybarAnimations;
 in
 with lib;
 {
